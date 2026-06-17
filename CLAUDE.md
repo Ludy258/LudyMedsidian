@@ -62,6 +62,16 @@ git push
 ### 修改首页
 编辑 `content/index.md`。
 
+## 已启用的网站功能
+
+- **📊 流量统计** — GoatCounter（面板：https://ludy258.goatcounter.com）
+- **🕐 最近更新** — 页面右侧显示最近修改的 5 篇笔记
+- **💬 评论区** — 基于 giscus/GitHub Discussions，每页底部可留言
+- **📡 RSS 订阅** — 支持 RSS 订阅更新
+- **🔍 全文搜索** — 支持全站搜索
+- **🌐 中文本地化** — 界面语言为中文
+- **🌙 暗色模式** — 支持亮色/暗色切换
+
 ## 联系方式
 
 邮箱：24xzhuo@stu.edu.cn（已添加到页脚）
