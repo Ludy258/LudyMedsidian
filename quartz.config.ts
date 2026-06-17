@@ -14,6 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: {
       provider: "goatcounter",
+      websiteId: "ludy258",
     },
     locale: "zh-CN",
     baseUrl: "ludy258.github.io/LudyMedsidian",
