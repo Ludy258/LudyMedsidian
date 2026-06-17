@@ -9,7 +9,7 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/Ludy258/LudyMedsidian",
-      "📧 联系我": "mailto:24xzhuo@stu.edu.cn",
+      "📧 24xzhuo@stu.edu.cn": "mailto:24xzhuo@stu.edu.cn",
     },
   }),
 }
