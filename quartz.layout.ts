@@ -44,6 +44,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    Component.RecentNotes({ limit: 5, title: "最近更新", showTags: false }),
   ],
 }
 
@@ -64,5 +65,7 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [],
+  right: [
+    Component.RecentNotes({ limit: 5, title: "最近更新", showTags: false }),
+  ],
 }
