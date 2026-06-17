@@ -24,6 +24,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       GitHub: "https://github.com/Ludy258/LudyMedsidian",
       "📧 24xzhuo@stu.edu.cn": "mailto:24xzhuo@stu.edu.cn",
+      "⚠️ 免责声明": "/disclaimer",
     },
   }),
 }
