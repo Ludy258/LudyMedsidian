@@ -17,7 +17,7 @@ const config: QuartzConfig = {
       websiteId: "ludy258",
     },
     locale: "zh-CN",
-    baseUrl: "ludy258.github.io/LudyMedsidian",
+    baseUrl: "ludy-medsidian.vercel.app",
     ignorePatterns: ["private", "templates", ".obsidian", "**/.*"],
     defaultDateType: "modified",
     theme: {
