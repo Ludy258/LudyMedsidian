@@ -78,14 +78,29 @@ git push
 - **⚠️ 免责声明页面**（页脚链接 + 首页提示）
 - **📧 联系邮箱**（页脚展示）
 - **🤖 AI 辅助声明**（首页 + README）
+- **🔒 全站密码保护** — Vercel Edge Middleware，需在 Vercel Dashboard 设置环境变量
 
-## 待办（上线前需要做）
+## Vercel 部署设置
 
-### 1️⃣ 评论区激活
-去 https://github.com/apps/giscus 安装 giscus App 到 LudyMedsidian 仓库。
+网站已配置 Vercel Edge Middleware 全站密码保护。
 
-### 2️⃣ GoatCounter 统计激活
-去邮箱确认 GoatCounter 的验证邮件。
+### 环境变量（在 Vercel Dashboard 设置）
+
+| 变量名 | 说明 |
+|--------|------|
+| `SITE_PASSWORD` | 网站访问密码 |
+| `AUTH_SECRET` | 随机字符串，用于 session token 签名（可用 `openssl rand -hex 32` 生成） |
+
+### 登录机制
+
+- 用户首次访问任何页面 → 自动跳转 `/login`
+- 输入正确密码 → 设置 7 天有效期的 httpOnly cookie
+- 密码存在 Vercel 环境变量中，不留存代码里
+- Session token 用 HMAC-SHA256 签名，防篡改
+
+### 修改 `content/login.md`
+
+登录页面由 `middleware.ts` 直接渲染，如需修改样式，编辑 `middleware.ts` 中的 `loginPage()` 函数内的 HTML/CSS。
 
 ## 项目历史
 
