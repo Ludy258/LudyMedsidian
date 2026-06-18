@@ -82,25 +82,25 @@ git push
 
 ## Vercel 部署设置
 
-网站已配置 Vercel Edge Middleware 全站密码保护。
+网站已配置 Clerk 邮箱注册登录。
 
 ### 环境变量（在 Vercel Dashboard 设置）
 
 | 变量名 | 说明 |
 |--------|------|
-| `SITE_PASSWORD` | 网站访问密码 |
-| `AUTH_SECRET` | 随机字符串，用于 session token 签名（可用 `openssl rand -hex 32` 生成） |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk 公钥（从 Clerk Dashboard 获取） |
+| `CLERK_SECRET_KEY` | Clerk 密钥（从 Clerk Dashboard 获取） |
 
 ### 登录机制
 
-- 用户首次访问任何页面 → 自动跳转 `/login`
-- 输入正确密码 → 设置 7 天有效期的 httpOnly cookie
-- 密码存在 Vercel 环境变量中，不留存代码里
-- Session token 用 HMAC-SHA256 签名，防篡改
+- 用户首次访问任何页面 → 自动跳转 Clerk 登录/注册页
+- 支持邮箱注册、邮箱登录、忘记密码
+- Clerk 管理所有用户数据
+- 登录后自动重定向回原页面
 
-### 修改 `content/login.md`
+### 修改 Clerk 配置
 
-登录页面由 `middleware.ts` 直接渲染，如需修改样式，编辑 `middleware.ts` 中的 `loginPage()` 函数内的 HTML/CSS。
+登录页面样式、允许的登录方式等在 [Clerk Dashboard](https://dashboard.clerk.com) 中配置。
 
 ## 项目历史
 
