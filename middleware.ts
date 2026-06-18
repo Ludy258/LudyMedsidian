@@ -27,21 +27,6 @@ function getCookie(req: Request, name: string): string | undefined {
   }
 }
 
-function setCookie(
-  res: Response,
-  name: string,
-  value: string,
-  opts: { httpOnly?: boolean; secure?: boolean; sameSite?: string; path?: string; maxAge?: number } = {},
-): void {
-  const parts = [`${encodeURIComponent(name)}=${encodeURIComponent(value)}`]
-  if (opts.httpOnly) parts.push("HttpOnly")
-  if (opts.secure) parts.push("Secure")
-  if (opts.sameSite) parts.push(`SameSite=${opts.sameSite}`)
-  if (opts.path) parts.push(`Path=${opts.path}`)
-  if (opts.maxAge !== undefined) parts.push(`Max-Age=${opts.maxAge}`)
-  res.headers.append("Set-Cookie", parts.join("; "))
-}
-
 // --- JWT 工具 ---
 
 function decodeJwtPayload(token: string): Record<string, unknown> | null {
