@@ -82,25 +82,33 @@ git push
 
 ## Vercel 部署设置
 
-网站已配置 Clerk 邮箱注册登录。
+网站已配置 Supabase Auth 邮箱注册登录。
 
 ### 环境变量（在 Vercel Dashboard 设置）
 
 | 变量名 | 说明 |
 |--------|------|
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk 公钥（从 Clerk Dashboard 获取） |
-| `CLERK_SECRET_KEY` | Clerk 密钥（从 Clerk Dashboard 获取） |
+| `SUPABASE_URL` | Supabase 项目 URL（如 `https://xxx.supabase.co`） |
+| `SUPABASE_ANON_KEY` | anon/public 密钥（从 Supabase Dashboard 获取） |
 
 ### 登录机制
 
-- 用户首次访问任何页面 → 自动跳转 Clerk 登录/注册页
-- 支持邮箱注册、邮箱登录、忘记密码
-- Clerk 管理所有用户数据
-- 登录后自动重定向回原页面
+- 用户首次访问任何页面 → 自动跳转 `/login`
+- 支持邮箱注册、密码登录、忘记密码
+- 注册后需验证邮箱才能登录
+- Session 使用 httpOnly cookie 存储 JWT，7 天有效
+- Middleware 在 Edge 层拦截请求，静态资源不受影响
 
-### 修改 Clerk 配置
+### Supabase 设置
 
-登录页面样式、允许的登录方式等在 [Clerk Dashboard](https://dashboard.clerk.com) 中配置。
+创建项目后在 Supabase Dashboard 配置：
+1. **Authentication → Settings** 中确认邮箱验证已开启
+2. **Authentication → URL Configuration** 中将 `Site URL` 设为网站域名
+3. 注册邮箱域名限制在 Supabase Dashboard 的 **Authentication → Settings** 中配置
+
+### 登录页面
+
+由 `middleware.ts` 中的 `loginPage()` 函数渲染，如需修改样式或文案，编辑该函数内的 HTML。
 
 ## 项目历史
 
